@@ -7,6 +7,9 @@ macro_rules! err {
     ($tag:expr, $expr:expr) => {
         return Err($tag($expr));
     };
+    ($expr:expr) => {
+        return Err($expr);
+    };
 }
 
 #[macro_export]
