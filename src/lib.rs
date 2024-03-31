@@ -13,11 +13,18 @@ macro_rules! err {
 }
 
 #[macro_export]
+macro_rules! ok {
+    ($expr:expr) => {
+        return Ok($expr);
+    };
+}
+
+#[macro_export]
 macro_rules! wrap_result {
     ($tag:expr, $expr:expr) => {
         match $expr {
-            Ok(v) => { Ok(v) }
+            Ok(v) => { v }
             Err(e) => { return Err($tag(e)); }
-        }?
+        }
     };
 }
